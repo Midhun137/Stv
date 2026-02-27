@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>STV Pile Foundation — Home</title>
+
+<style>
+  /* -------- Theme & Reset -------- */
+  :root{
+    --blue-900:#003366;
+    --blue-700:#0a4f9a;
+    --accent:#0ea5ff;
+    --muted:#f4f7fb;
+    --card:#ffffff;
+    --shadow: 0 8px 24px rgba(2,6,23,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter, Arial, sans-serif;background:linear-gradient(180deg,var(--muted),#fff);color:#0b2236;line-height:1.5;}
+  a{color:inherit}
+
+  /* -------- Topbar & Header (shared) -------- */
+  .topbar{
+    background:linear-gradient(90deg,var(--blue-900),var(--blue-700));
+    color:white;
+    padding:10px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    box-shadow:var(--shadow);
+  }
+  .top-left{display:flex;align-items:center;gap:14px}
+  .logo{height:64px;width:auto;border-radius:8px;object-fit:contain}
+  .top-contact{font-size:14px;opacity:0.95}
+  header {
+    background:white;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;   /* Spread items */
+    padding:18px 20px;
+    box-shadow:0 6px 0px rgba(0,0,0,0.06);
+    gap: 60px;
+}
+
+/* COMMON CLASS FOR ALL OTHER HEADERS */
+.ab, .se, .pe, .po, .co {
+    background:#fff;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:left;
+    padding:18px 0px;
+    box-shadow:0 6px 0px rgba(0,0,0,0.06);
+    /* gap: 60px; */
+    /* width: calc(100% - 100px); */
+    margin: 0 auto; /* centers content */
+}
+
+  header .brand { text-align:center; margin-bottom:12px }
+  h1{font-size:24px;color:var(--blue-900);letter-spacing:0.4px}
+  p.lead{color:#3b556b;margin-top:6px}
+
+  nav.mainnav{display:flex;gap:18px;flex-wrap:wrap}
+  nav.mainnav a{
+    text-decoration:none;padding:10px 12px;border-radius:8px;font-weight:600;color:#083049;
+    transition:all .22s ease;
+  }
+  nav.mainnav a:hover{background:linear-gradient(90deg,var(--blue-700),var(--blue-900));color:white;box-shadow:0 8px 20px rgba(3,30,66,0.12)}
+  /* nav.mainnav a.active{background:var(--blue-900);color:white} */
+
+  /* -------- Hero Slider -------- */
+  .hero{
+    max-width:1500px;margin:0px auto 2px;overflow:hidden;box-shadow:var(--shadow);background:#fff;
+  }
+  .slides{position:relative;height:660px}
+  .slide{
+    position:absolute;inset:0;opacity:0;transition:opacity .9s ease, transform .9s ease;
+    background-size:cover;background-position:center;
+  }
+  .slide.show{opacity:1;transform:translateY(0)}
+  .hero-overlay{
+    position:absolute;left:24px;bottom:28px;color:white;z-index:4;
+    background:linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
+    padding:18px;border-radius:10px;max-width:60%;
+  }
+  .hero-overlay h2{font-size:28px;margin-bottom:6px}
+  .hero-controls{position:absolute;right:18px;top:50%;transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:10px}
+  .hero-btn{background:rgba(255,255,255,0.85);padding:10px;border-radius:8px;cursor:pointer;box-shadow:0 6px 18px rgba(2,6,23,0.12)}
+  .hero-btn:hover{transform:translateY(-3px)}
+
+  /* -------- Quick services cards -------- */
+  .cards{max-width:1100px;margin:30px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;padding:10px}
+  .card{background:var(--card);padding:18px;border-radius:10px;box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease}
+  .card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(3,30,66,0.12)}
+  .card h3{color:var(--blue-900);margin-bottom:6px}
+  .card p{color:#446173;font-size:15px}
+
+  /* -------- Projects preview -------- */
+  .projects-preview{max-width:1100px;margin:18px auto 40px;padding:10px;display:grid;grid-template-columns:2fr 1fr;gap:16px;align-items:stretch}
+  .project-large{background:url('Images/p1.jpg') center/cover no-repeat;height:240px;border-radius:12px;box-shadow:var(--shadow);position:relative;display:flex;align-items:flex-end;padding:18px;color:white}
+  .project-large .tag{background:rgba(0,0,0,0.45);padding:8px;border-radius:8px}
+  .project-list{display:grid;gap:12px}
+  .project-item{background:#fff;padding:14px;border-radius:10px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px}
+
+  /* -------- Footer (shared) -------- */
+  footer{background:linear-gradient(90deg,var(--blue-900),var(--blue-700));color:white;padding:22px 18px;margin-top:36px}
+  footer .wrap{max-width:1100px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer a{color:#dbeeff;text-decoration:none}
+
+  /* -------- WhatsApp floating -------- */
+  .wa{
+    position:fixed;right:20px;bottom:20px;width:64px;height:64px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;background:#25D366;box-shadow:0 10px 30px rgba(0,0,0,0.18);z-index:60;transition:transform .2s;
+  }
+  .wa:hover{transform:translateY(-6px)}
+  .wa img{width:36px;height:36px}
+
+  /* -------- Responsive -------- */
+  @media (max-width:880px){
+    .hero-overlay{max-width:85%}
+    .projects-preview{grid-template-columns:1fr}
+    .project-large{height:180px}
+  }
+
+  /* -------- small animations -------- */
+  .fade-in{opacity:0;transform:translateY(8px);animation:fadeIn .7s forwards}
+  @keyframes fadeIn{to{opacity:1;transform:none}}
+
+
+  .project-large{
+  position: relative;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 260px;
+}
+
+.project-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+    border-radius: 25px;
+
+}
+
+.project-overlay{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 18px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: white;
+}
+
+</style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="top-left">
+      <img class="logo" src="Images/logo.png" alt="logo">
+      <div style="color:#e6f0ff">
+        <div style="font-weight:700">STV PILE FOUNDATION</div>
+        <div style="font-size:13px;opacity:.9">Pile Foundation • Load Test</div>
+      </div>
+    </div>
+
+    <div class="top-contact" style="text-align:right">
+      <div>📞 +91 98844 43705 | +91 82486 88068</div>
+      <div style="font-size:13px;opacity:.95">✉ stvpile3@gmail.com</div>
+    </div>
+  </div>
+
+  <!-- Header + Nav -->
+  <header>
+    <nav class="mainnav">
+      <a class="active" href="stv.html">Home</a></nav>
+      <nav class="mainnav"> <a href="about.html">About</a>
+</nav>
+      <nav class="mainnav"><a href="service.html">Services</a></nav>
+      <nav class="mainnav"> <a href="project.html">Projects</a></nav>
+      <nav class="mainnav"><a href="price.html">Prices</a></nav>
+      <nav class="mainnav"><a href="contact.html">Contact</a></nav>
+  </header>
+  
+
+  <!-- HERO -->
+  <section class="hero fade-in" aria-hidden="false">
+
+    <div class="slides" id="slides">
+      <div class="slide show" style="background-image:url('img1.jpg')"></div>
+      <div class="slide" style="background-image:url('img2.jpg')"></div>
+      <div class="slide" style="background-image:url('img3.jpg')"></div>
+      <div class="hero-overlay">
+        <h2>Strong Foundations for Lasting Structures</h2>
+        <p>Experienced piling & load testing teams. On-time, on-budget, engineered for safety.</p>
+      </div>
+      <div class="hero-controls">
+        <div class="hero-btn" id="prev">‹</div>
+        <div class="hero-btn" id="next">›</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Cards -->
+  <section class="cards fade-in" style="animation-delay:.15s">
+    <div class="card">
+      <h3>Bored Cast-in-situ Piles</h3>
+      <p>Accurate bored pile solutions with casing & reinforcement as required.</p>
+    </div>
+    <div class="card">
+      <h3>Hydraulic Rotary Piling</h3>
+      <p>High-efficiency drilling with modern rigs for deep foundations.</p>
+    </div>
+    <div class="card">
+      <h3>Static & Dynamic Load Tests</h3>
+      <p>Certified load testing to verify pile capacity and safety.</p>
+    </div>
+    <div class="card">
+      <h3>Soil Investigation</h3>
+      <p>Geotechnical boreholes & lab testing to design optimum foundations.</p>
+    </div>
+  </section>
+
+  <!-- Projects preview
+  <section class="projects-preview fade-in" style="animation-delay:.25s">
+    <div class="project-large">
+      <div>
+        <div class="tag">Residential Complex — Chennai</div>
+        <div style="margin-top:10px;font-weight:700;font-size:18px">200+ piles completed</div>
+      </div>
+    </div>
+    <div class="project-list">
+      <div class="project-item"><strong>Commercial Complex</strong> • Coimbatore</div>
+      <div class="project-item"><strong>Bridge Support</strong> • Trichy</div>
+      <div class="project-item"><strong>Industrial Plant</strong> • Hosur</div>
+    </div>
+  </section> -->
+  <!-- Projects preview -->
+<section class="projects-preview fade-in" style="animation-delay:.25s">
+
+  <div class="project-large">
+    <!-- Image -->
+    <img src="imgg1.jpg" alt="Residential Complex Chennai" class="project-img">
+
+    <!-- Text Overlay -->
+    <div class="project-overlay">
+      <div style="margin-top:10px;font-weight:700;font-size:18px">
+        200+ piles completed
+      </div>
+    </div>
+  </div>
+
+  <div class="project-list">
+    <div class="project-item"><strong>  Tamil Nadu</strong> </div>
+    <div class="project-item"><strong>  Kerala</strong></div>
+    <div class="project-item"><strong>  Andhra Pradesh</strong></div>
+  </div>
+
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div>
+        <div style="font-size:18px;font-weight:700">STV Pile Foundation</div>
+        <div style="opacity:0.9;margin-top:6px">Pile Foundation • Load Test • Soil Investigation</div>
+      </div>
+      <div style="text-align:right">
+        <div>📞 +91 98844 43705</div>
+        <div style="margin-top:6px">✉ <a href="mailto:stvpile3@gmail.com">stvpile3@gmail.com</a></div>
+        <div style="margin-top:10px; font-size:13px; opacity:.9">© 2025 STV Pile Foundation</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a class="wa" href="https://wa.me/919884443705" target="_blank" aria-label="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="wa">
+  </a>
+
+<script>
+  // Slider simple logic
+  (function(){
+    const slides = document.querySelectorAll('.slide');
+    let idx = 0, timer = null;
+
+    function show(i){
+      slides.forEach(s=>s.classList.remove('show'));
+      slides[i].classList.add('show');
+    }
+    function next(){ idx = (idx+1) % slides.length; show(idx); }
+
+    document.getElementById('next').addEventListener('click', ()=>{
+      clearInterval(timer); next(); timer = setInterval(next,4000);
+    });
+    document.getElementById('prev').addEventListener('click', ()=>{
+      clearInterval(timer); idx = (idx-1 + slides.length) % slides.length; show(idx); timer = setInterval(next,4000);
+    });
+
+    timer = setInterval(next,4000);
+    show(0);
+  })();
+</script>
+
+</body>
+</html>
