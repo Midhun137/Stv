@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>STV Pile Foundation — Home</title>
+
+<style>
+  /* -------- Theme & Reset -------- */
+:root{
+    --blue-900:#003366;
+    --blue-700:#0a4f9a;
+    --accent:#0ea5ff;
+    --muted:#f4f7fb;
+    --card:#ffffff;
+    --shadow: 0 8px 24px rgba(2,6,23,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Inter, Arial, sans-serif;background:linear-gradient(180deg,var(--muted),#fff);color:#0b2236;line-height:1.5;}
+  a{color:inherit}
+
+  /* -------- Topbar & Header (shared) -------- */
+  .topbar{
+    background:linear-gradient(90deg,var(--blue-900),var(--blue-700));
+    color:white;
+    padding:10px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    box-shadow:var(--shadow);
+  }
+  .top-left{display:flex;align-items:center;gap:14px}
+  .logo{height:64px;width:auto;border-radius:8px;object-fit:contain}
+  .top-contact{font-size:14px;opacity:0.95}
+  header {
+    background:white;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;   /* Spread items */
+    padding:18px 20px;
+    box-shadow:0 6px 0px rgba(139, 205, 221, 0.06);
+    gap: 60px;
+}
+
+/* COMMON CLASS FOR ALL OTHER HEADERS */
+.ab, .se, .pe, .po, .co {
+    background:#fafafa;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:left;
+    padding:18px 0px;
+    box-shadow:0 6px 0px rgba(0,0,0,0.06);
+    /* gap: 60px; */
+    /* width: calc(100% - 100px); */
+    margin: 0 auto; /* centers content */
+}
+
+
+  header .brand { text-align:center; margin-bottom:12px }
+  h1{font-size:24px;color:var(--blue-900);letter-spacing:0.4px}
+  p.lead{color:#3b556b;margin-top:6px}
+
+  nav.mainnav{display:flex;gap:18px;flex-wrap:wrap}
+  nav.mainnav a{
+    text-decoration:none;padding:10px 12px;border-radius:8px;font-weight:600;color:#083049;
+    transition:all .22s ease;
+  }
+  nav.mainnav a:hover{background:linear-gradient(90deg,var(--blue-700),var(--blue-900));color:white;box-shadow:0 8px 20px rgba(3,30,66,0.12)}
+  /* nav.mainnav a.active{background:var(--blue-900);color:white} */
+
+  /* -------- Footer (shared) -------- */
+  footer{background:linear-gradient(90deg,var(--blue-900),var(--blue-700));color:white;padding:22px 18px;margin-top:36px}
+  footer .wrap{max-width:1100px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer a{color:#dbeeff;text-decoration:none}
+
+  /* -------- WhatsApp floating -------- */
+  .wa{
+    position:fixed;right:20px;bottom:20px;width:64px;height:64px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;background:#25D366;box-shadow:0 10px 30px rgba(0,0,0,0.18);z-index:60;transition:transform .2s;
+  }
+  .wa:hover{transform:translateY(-6px)}
+  .wa img{width:36px;height:36px}
+
+  /* -------- Responsive -------- */
+  @media (max-width:880px){
+    .hero-overlay{max-width:85%}
+    .projects-preview{grid-template-columns:1fr}
+    .project-large{height:180px}
+  }
+
+  /* -------- small animations -------- */
+  .fade-in{opacity:0;transform:translateY(8px);animation:fadeIn .7s forwards}
+  @keyframes fadeIn{to{opacity:1;transform:none}}
+/* ===== ADVANCED SERVICES PAGE ===== */
+.services-hero{
+  text-align:center;
+  padding: 30px ;
+}
+.services-hero h2{
+  font-size:30px;
+  color:var(--blue-900);
+}
+.services-hero p{
+  /* margin-top:12px; */
+  font-size:14px;
+  color:#475569;
+  max-width:700px;
+  margin-inline:auto;
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:28px;
+  margin-top:0px;
+}
+
+.service-card{
+  background:#fff;
+  padding:36px 28px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 18px 45px rgba(2,6,23,0.14);
+  transition:.4s ease;
+}
+.service-card:hover{
+  transform:translateY(-16px);
+  box-shadow:0 30px 70px rgba(2,6,23,0.25);
+}
+
+.service-icon{
+  width:78px;
+  height:78px;
+  margin:auto;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--blue-900),var(--blue-700));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  color:#fff;
+  margin-bottom:18px;
+}
+
+.service-card h3{
+  font-size:20px;
+  color:var(--blue-900);
+  margin-bottom:10px;
+}
+.service-card p{
+  font-size:15px;
+  color:#475569;
+  line-height:1.6;
+}
+.line{
+  width:80px;
+  height:4px;
+  background:linear-gradient(90deg,#0a4f9a,#0ea5ff);
+  margin:12px auto 40px;
+  border-radius:10px;
+}
+
+/* ===== PROCESS ===== */
+.process{
+  margin-top:90px;
+  background:linear-gradient(180deg,#f4f7fb,#ffffff);
+  padding:60px 30px;
+  border-radius:26px;
+  box-shadow:var(--shadow);
+}
+.process h3{
+  text-align:center;
+  font-size:30px;
+  color:var(--blue-900);
+}
+.process-steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:26px;
+  margin-top:40px;
+}
+.step{
+  background:#fff;
+  padding:26px;
+  border-radius:18px;
+  box-shadow:0 14px 30px rgba(0,0,0,.12);
+}
+.step span{
+  font-size:26px;
+}
+.step h4{
+  margin-top:10px;
+  color:var(--blue-900);
+}
+.step p{
+  font-size:14.5px;
+  margin-top:6px;
+  color:#475569;
+}
+
+/* ===== STATS ===== */
+.stats{
+  margin:90px 0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:30px;
+  text-align:center;
+}
+.stat{
+  background:linear-gradient(135deg,#041754,#5499e3);
+  color:#fff;
+  padding:40px 20px;
+  border-radius:24px;
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+.stat h2{
+  font-size:40px;
+}
+.stat p{
+  margin-top:6px;
+  opacity:.9;
+}
+
+</style>
+</head>
+
+<body>
+
+ <!-- Topbar -->
+  <div class="topbar">
+    <div class="top-left">
+      <img class="logo" src="Images/logo.png" alt="logo">
+      <div style="color:#e6f0ff">
+        <div style="font-weight:700">STV PILE FOUNDATION</div>
+        <div style="font-size:13px;opacity:.9">Pile Foundation • Load Test</div>
+      </div>
+    </div>
+
+    <div class="top-contact" style="text-align:right">
+      <div>📞 +91 98844 43705 | +91 82486 88068</div>
+      <div style="font-size:13px;opacity:.95">✉ stvpile3@gmail.com</div>
+    </div>
+  </div>
+
+<!-- HEADER -->
+<header>
+  <nav class="mainnav"><a href="stv.html">Home</a></nav>
+  <nav class="mainnav"><a href="about.html">About</a></nav>
+  <nav class="mainnav"><a href="service.html">Services</a></nav>
+  <nav class="mainnav"><a href="project.html">Projects</a></nav>
+  <nav class="mainnav"><a href="price.html">Prices</a></nav>
+  <nav class="mainnav"><a href="contact.html">Contact</a></nav>
+</header>
+
+<main class="main">
+
+  <section class="services-hero">
+    <h2>About US</h2>
+    <div class="line"></div>
+  
+  </section>
+
+  <section class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏗</div>
+      <h3>Pile Foundation</h3>
+      <p>Strong pile foundation works designed to support heavy loads
+      with maximum safety.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">⚙</div>
+      <h3>Rotary Piling</h3>
+      <p>High-precision rotary piling using modern hydraulic rigs
+      for deep foundations.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🛠</div>
+      <h3>Bored Piling</h3>
+      <p>Low vibration bored piling ideal for urban and restricted sites.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">📐</div>
+      <h3>Load Testing</h3>
+      <p>Static and dynamic pile load tests ensuring design compliance.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🌍</div>
+      <h3>Soil Investigation</h3>
+      <p>Complete geotechnical analysis to determine soil bearing capacity.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Foundation Consulting</h3>
+      <p>Expert technical guidance for foundation design and execution.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Commercial Projects</h3>
+      <p>Piling solutions for apartments, IT parks and office buildings.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🏭</div>
+      <h3>Industrial Projects</h3>
+      <p>Heavy-duty foundations for factories, warehouses and plants.</p>
+    </div>
+  </section>
+
+  <section class="process">
+    <h3>Our Working Process</h3>
+    <div class="line"></div>
+    <div class="process-steps">
+      <div class="step">
+        <span>📋</span>
+        <h4>Site Inspection</h4>
+        <p>Detailed analysis of site conditions and soil profile.</p>
+      </div>
+      <div class="step">
+        <span>📐</span>
+        <h4>Engineering Design</h4>
+        <p>Foundation design based on load and soil data.</p>
+      </div>
+      <div class="step">
+        <span>⚙</span>
+        <h4>Execution</h4>
+        <p>Safe and precise piling using advanced machinery.</p>
+      </div>
+      <div class="step">
+        <span>✅</span>
+        <h4>Testing & Handover</h4>
+        <p>Load testing and quality assurance before delivery.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <h2>15+</h2>
+      <p>Years Experience</p>
+    </div>
+    <div class="stat">
+      <h2>500+</h2>
+      <p>Projects Completed</p>
+    </div>
+    <div class="stat">
+      <h2>100%</h2>
+      <p>Safety Compliance</p>
+    </div>
+    <div class="stat">
+      <h2>24/7</h2>
+      <p>Client Support</p>
+    </div>
+  </section>
+
+
+</main>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div>
+      <strong>STV Pile Foundation</strong><br>
+      <small>Pile Foundation • Load Test • Soil Investigation</small>
+    </div>
+    <div style="text-align:right">
+      📞 +91 98844 43705<br>
+      ✉ <a href="mailto:stvpile3@gmail.com">stvpile3@gmail.com</a><br>
+      <small>© 2025 STV Pile Foundation</small>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP -->
+<a class="wa" href="https://wa.me/919884443705" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
+
+</body>
+</html>
