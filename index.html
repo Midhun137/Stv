@@ -99,7 +99,7 @@
 
   /* -------- Projects preview -------- */
   .projects-preview{max-width:1100px;margin:18px auto 40px;padding:10px;display:grid;grid-template-columns:2fr 1fr;gap:16px;align-items:stretch}
-  .project-large{background:url('Images/p1.jpg') center/cover no-repeat;height:240px;border-radius:12px;box-shadow:var(--shadow);position:relative;display:flex;align-items:flex-end;padding:18px;color:white}
+  .project-large{background:url('Images/p1.jpg') center/cover no-repeat;height:240px;border-radius:12px;box-shadow:var(--shadow);position:relative;display:flex;align-items:flex-end;padding:0px;color:white}
   .project-large .tag{background:rgba(0,0,0,0.45);padding:8px;border-radius:8px}
   .project-list{display:grid;gap:12px}
   .project-item{background:#fff;padding:14px;border-radius:10px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px}
@@ -129,11 +129,11 @@
   @keyframes fadeIn{to{opacity:1;transform:none}}
 
 
-  .project-large{
+.project-large{
   position: relative;
-  border-radius: 25px;
+  height: 300px;
+  border-radius: 20px;
   overflow: hidden;
-  height: 260px;
 }
 
 .project-img{
@@ -141,19 +141,17 @@
   height: 100%;
   object-fit: cover;
   display: block;
-    border-radius: 25px;
-
 }
 
 .project-overlay{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 18px;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-  color: white;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:25px;
+  background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color:#fff;
 }
+
 
 </style>
 </head>
@@ -178,7 +176,7 @@
   <!-- Header + Nav -->
   <header>
     <nav class="mainnav">
-      <a class="active" href="stv.html">Home</a></nav>
+      <a class="active" href="index.html">Home</a></nav>
       <nav class="mainnav"> <a href="about.html">About</a>
 </nav>
       <nav class="mainnav"><a href="service.html">Services</a></nav>
@@ -186,7 +184,7 @@
       <nav class="mainnav"><a href="price.html">Prices</a></nav>
       <nav class="mainnav"><a href="contact.html">Contact</a></nav>
   </header>
-  
+
 
   <!-- HERO -->
   <section class="hero fade-in" aria-hidden="false">
@@ -226,31 +224,17 @@
     </div>
   </section>
 
-  <!-- Projects preview
-  <section class="projects-preview fade-in" style="animation-delay:.25s">
-    <div class="project-large">
-      <div>
-        <div class="tag">Residential Complex — Chennai</div>
-        <div style="margin-top:10px;font-weight:700;font-size:18px">200+ piles completed</div>
-      </div>
-    </div>
-    <div class="project-list">
-      <div class="project-item"><strong>Commercial Complex</strong> • Coimbatore</div>
-      <div class="project-item"><strong>Bridge Support</strong> • Trichy</div>
-      <div class="project-item"><strong>Industrial Plant</strong> • Hosur</div>
-    </div>
-  </section> -->
   <!-- Projects preview -->
 <section class="projects-preview fade-in" style="animation-delay:.25s">
 
   <div class="project-large">
     <!-- Image -->
-    <img src="imgg1.jpg" alt="Residential Complex Chennai" class="project-img">
+    <img src="vec.png" alt="Residential Complex Chennai" class="project-img">
 
     <!-- Text Overlay -->
     <div class="project-overlay">
-      <div style="margin-top:10px;font-weight:700;font-size:18px">
-        200+ piles completed
+        <div style="margin-top:10px;font-weight:700;font-size:20px">
+        500+ piles completed
       </div>
     </div>
   </div>
